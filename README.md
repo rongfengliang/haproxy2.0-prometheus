@@ -11,5 +11,5 @@ docker-compose up -d
 * import dashboard json
 
 ```code
-
+haproxy-2-0_rev1.json
 ```
