@@ -1,0 +1,33 @@
+version: "3"
+services:
+    grafana:
+     image: grafana/grafana
+     ports:
+     - "3000:3000"
+    prometheus:
+     image: prom/prometheus
+     volumes:
+     - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+     ports:
+     - "9090:9090"
+    haproxy:
+     image: haproxy:2.0.5
+     volumes:
+     - "./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
+     ports:
+     - "80:80"
+     - "8404:8404"
+     - "8080:8080"
+     - "9000:9000"
+     - "9001:9001"
+     - "9002:9002"
+     - "1000-1005:1000-1005"
+     - "10080:10080"
+    nginx1:
+     image: nginx
+     ports:
+     - "8090:80"
+    nginx2:
+     image: nginx
+     ports:
+     - "8091:80"
