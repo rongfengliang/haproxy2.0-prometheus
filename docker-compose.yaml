@@ -11,7 +11,7 @@ services:
      ports:
      - "9090:9090"
     haproxy:
-     image: dalongrong/haproxy-dataplan:2.0.5
+     image: dalongrong/haproxy-dataplaneapi:2.0.5
      build: ./
      volumes:
      - "./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
