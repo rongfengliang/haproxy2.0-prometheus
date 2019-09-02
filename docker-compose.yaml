@@ -10,11 +10,18 @@ services:
      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
      ports:
      - "9090:9090"
+    graphql:
+     ports:
+     - "3009:3009"
+     environment:
+     - "URL=http://admin:dalong@haproxy:5555/v1/"
+     image: dalongrong/haproxy-dataplaneapi2graphql
     haproxy:
      image: dalongrong/haproxy-dataplaneapi:2.0.5
      build: ./
      volumes:
      - "./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
+     - "./socket:/run/"
      ports:
      - "80:80"
      - "5555:5555"
